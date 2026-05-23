@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using Dialogue.Core;
 using Dialogue.Data;
+using Dialogue.Audio;
 using Ink.Runtime;
 
 namespace Dialogue.Presentation
@@ -91,6 +92,7 @@ namespace Dialogue.Presentation
             {
                 _speakerNameText.gameObject.SetActive(true);
                 _speakerNameText.text = line.Speaker;
+                AudioManager.Instance?.PlayVoice(line.Speaker); // voz por speaker
             }
 
             // 📌 GDD — Aqui se conecta el TypewriterEffect.

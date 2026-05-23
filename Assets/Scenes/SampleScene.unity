@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8235294}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -889,6 +889,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156029238}
   m_CullTransparentMesh: 1
+--- !u!1 &1278880679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1278880681}
+  - component: {fileID: 1278880680}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1278880680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278880679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34ea9e5593947544b66a6c24f8d2d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _library: {fileID: 11400000, guid: c3c73c40911b1f447b43c9ec257b6b82, type: 2}
+  _sfxVolume: 1
+  _musicVolume: 0.7
+  _voiceVolume: 1
+--- !u!4 &1278880681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278880679}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 366.8792, y: 36.350838, z: -2.7368617}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1664699670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1219,8 @@ GameObject:
   - component: {fileID: 2088357262}
   - component: {fileID: 2088357263}
   - component: {fileID: 2088357264}
+  - component: {fileID: 2088357265}
+  - component: {fileID: 2088357266}
   m_Layer: 0
   m_Name: DialogueSystem
   m_TagString: Untagged
@@ -1233,7 +1283,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _runner: {fileID: 2088357262}
-  _inkJson: {fileID: 4900000, guid: 33cbff83a5db52d4998c6c54c3ccc438, type: 3}
+  _inkJson: {fileID: 4900000, guid: a459bdf4bd906164b9cd5ae1daa7bbb3, type: 3}
+--- !u!114 &2088357265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088357260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791bbae77f39a9d4e94e6c99fa390384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _runner: {fileID: 2088357262}
+--- !u!114 &2088357266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088357260}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0465dfc73b54714ca43347c2c24d572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _runner: {fileID: 2088357262}
+  _storage: {fileID: 11400000, guid: 3ca3e39471bccd94cb7495496527c41b, type: 2}
+  _maxLogLines: 50
+  _fontSize: 14
+  _panelWidth: 600
+  _panelHeight: 600
 --- !u!1 &2129591750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,3 +1386,4 @@ SceneRoots:
   - {fileID: 2088357261}
   - {fileID: 1664699674}
   - {fileID: 752392611}
+  - {fileID: 1278880681}

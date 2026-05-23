@@ -30,6 +30,9 @@ namespace Dialogue.Core
         // Dispara cuando la conversación termina.
         public event Action OnDialogueEnded;
 
+        public event Action<List<string>> OnTagsReady;  // ⚠️ SOLID — en P3 migra a SO Event Channel
+
+
         // ─── Estado interno ───────────────────────────────────────────
 
         private Story                  _currentStory;
@@ -100,7 +103,9 @@ namespace Dialogue.Core
             {
                 string rawLine = _currentStory.Continue();
 
-
+                // Procesamos tags SIEMPRE, incluso en líneas vacías
+                if (_currentStory.currentTags?.Count > 0)
+                    OnTagsReady?.Invoke(_currentStory.currentTags);
 
                 // Ink puede devolver líneas vacías entre bloques.
                 // Las saltamos automáticamente.
@@ -111,14 +116,10 @@ namespace Dialogue.Core
                     return;
                 }
 
-                OnLineReady?.Invoke(DialogueLine.Parse(rawLine));
-
                 if (_currentStory == null) return;
 
-                // Después de avanzar, Ink puede haber llegado
-                // a un punto de elección. Lo notificamos de inmediato.
-                //if (!_currentStory.canContinue && _currentStory.currentChoices.Count > 0)
-                //   OnChoicesReady?.Invoke(_currentStory.currentChoices);
+                OnLineReady?.Invoke(DialogueLine.Parse(rawLine));
+
             }
             else if (_currentStory.currentChoices.Count > 0)
             {
