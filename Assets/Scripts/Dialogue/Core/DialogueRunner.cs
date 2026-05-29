@@ -64,30 +64,90 @@ namespace Dialogue.Core
 
         // ─── API pública ──────────────────────────────────────────────
 
-        // Inicia una conversación desde un TextAsset .ink compilado a JSON.
-        // inkJsonAsset es el archivo .ink.json que genera Ink al compilar.
-        public void StartDialogue(TextAsset inkJsonAsset)
+        /// <summary>
+        /// Carga una historia completa de Ink en memoria.
+        /// Llamar UNA SOLA VEZ al iniciar la escena o al cambiar de habitación.
+        /// No inicia ningún diálogo — solo prepara la historia para ser usada.
+        /// </summary>
+        public void LoadStory(TextAsset inkJsonAsset)
         {
-            if (_isRunning)
+            if (inkJsonAsset == null)
             {
-                Debug.LogWarning(
-                    "[DialogueRunner] Se intentó iniciar un diálogo " +
-                    "mientras otro estaba en curso. Ignorado.");
+                Debug.LogError("[DialogueRunner] inkJsonAsset es null.");
                 return;
             }
 
-            if (inkJsonAsset == null)
+            if (_isRunning)
             {
-                Debug.LogError(
-                    "[DialogueRunner] inkJsonAsset es null. " +
-                    "Asigná un archivo .ink.json válido.");
+                Debug.LogWarning(
+                    "[DialogueRunner] Se intentó cargar una historia mientras " +
+                    "un diálogo estaba en curso. Terminá el diálogo primero.");
                 return;
             }
 
             _currentStory = new Story(inkJsonAsset.text);
             _variableStorage.BindToStory(_currentStory);
+
+            Debug.Log($"[DialogueRunner] Historia cargada: {inkJsonAsset.name}");
+        }
+
+        /// <summary>
+        /// Salta a un knot específico e inicia el diálogo desde ahí.
+        /// Requiere que LoadStory() haya sido llamado antes.
+        /// Llamado por InteractionSystem vía OnKnotRequested.
+        /// </summary>
+        public void StartDialogueAtKnot(string knot)
+        {
+            if (_currentStory == null)
+            {
+                Debug.LogError(
+                    "[DialogueRunner] No hay historia cargada. " +
+                    "Llamá LoadStory() antes de StartDialogueAtKnot().");
+                return;
+            }
+
+            if (_isRunning)
+            {
+                Debug.LogWarning(
+                    "[DialogueRunner] Se intentó iniciar un diálogo mientras " +
+                    "otro estaba en curso. Ignorado.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(knot))
+            {
+                Debug.LogError("[DialogueRunner] Knot vacío o null.");
+                return;
+            }
+
+            // Verifica que el knot existe en la historia antes de saltar      // evita crash silencioso de Ink
+            if (!_currentStory.mainContentContainer.namedContent.ContainsKey(knot))
+            {
+                Debug.LogError(
+                    $"[DialogueRunner] El knot '{knot}' no existe en la historia cargada. " +
+                    $"Verificá el nombre en el archivo .ink.");
+                return;
+            }
+
+            _currentStory.ChoosePathString(knot);
             _isRunning = true;
 
+            Continue();
+        }
+
+
+        /// <summary>
+        /// Mantiene compatibilidad con el sistema anterior.
+        /// Carga Y arranca desde el principio de la historia.
+        /// Usar solo si la historia no tiene knots (diálogo lineal completo).
+        /// </summary>
+        public void StartDialogue(TextAsset inkJsonAsset)
+        {
+            LoadStory(inkJsonAsset);
+
+            if (_currentStory == null) return;
+
+            _isRunning = true;
             Continue();
         }
 
@@ -160,8 +220,6 @@ namespace Dialogue.Core
         private void EndDialogue()
         {
             _isRunning = false;
-            _variableStorage.UnbindFromCurrentStory();
-            _currentStory = null;
             OnDialogueEnded?.Invoke();
         }
     }

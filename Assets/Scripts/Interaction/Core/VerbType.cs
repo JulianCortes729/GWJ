@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VerbType : MonoBehaviour
+namespace Interaction.Core
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum VerbType
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        None   = 0,
+        Look   = 1,
+        Talk   = 2,
+        Use    = 3
     }
 }
