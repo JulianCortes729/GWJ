@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7806fa7b79e63ed48aa67ab4772b02ea, type: 3}
+  m_Name: Journey_1
+  m_EditorClassIdentifier: 
+  _journeyNumber: 1
+  _title: "Primer D\xEDa"
+  _messages:
+  - {fileID: 11400000, guid: e7f2c2b901171ee4382637ea3a8986de, type: 2}
+  _preProductionKnot: 
+  _onAirKnot: 
+  _closingKnot: 
+  _inkAsset: {fileID: 0}

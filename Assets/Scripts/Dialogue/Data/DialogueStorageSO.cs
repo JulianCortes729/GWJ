@@ -55,9 +55,31 @@ namespace Dialogue.Data
         // Crítico: los SO retienen cambios entre Play sessions en Editor.
         public void ResetAll()
         {
-            _bools.Clear();
-            _floats.Clear();
-            _strings.Clear();
+            ClearLocalVariables(_bools);
+            ClearLocalVariables(_floats);
+            ClearLocalVariables(_strings);
+        }
+
+
+        private void ClearLocalVariables<T>(Dictionary<string, T> dict)
+        {
+            // 🔴 GC ALLOC — Instanciamos una lista para guardar las keys.
+            // 🟡 PERF — Es totalmente aceptable porque ocurre SOLO UNA VEZ 
+            // al cambiar de día durante una carga de nivel (fuera del hot path).
+            List<string> keysToRemove = new List<string>();
+
+            foreach (var key in dict.Keys)
+            {
+                if (!key.StartsWith("GLOBAL_"))
+                {
+                    keysToRemove.Add(key);
+                }
+            }
+
+            foreach (var key in keysToRemove)
+            {
+                dict.Remove(key);
+            }
         }
 
         // ─── Debug ────────────────────────────────────────────────────

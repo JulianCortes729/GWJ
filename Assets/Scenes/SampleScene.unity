@@ -957,6 +957,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &561741391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561741393}
+  - component: {fileID: 561741392}
+  - component: {fileID: 561741394}
+  m_Layer: 0
+  m_Name: JourneySystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &561741392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561741391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a176cf71326dd5240b0d68ff432c9503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _journeys:
+  - {fileID: 11400000, guid: 88947b655f6fb3541823469661702aff, type: 2}
+  - {fileID: 11400000, guid: fa8e74c5a0e03fc48bb1da39a5cdc844, type: 2}
+  _dialogueRunner: {fileID: 2088357262}
+  _dialogueStorage: {fileID: 11400000, guid: 3ca3e39471bccd94cb7495496527c41b, type: 2}
+--- !u!4 &561741393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561741391}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.11614695, y: 0.40961313, z: 1.9667891}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &561741394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561741391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3f06c268ea66640b066b407cd5eb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _journeyManager: {fileID: 561741392}
+  _currentPhase: "\u2014"
+  _currentJourney: "\u2014"
+  _messageCount: 0
+  _lastEvent: "\u2014"
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,7 +2640,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088357260}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f729fa872bfe0a43b5da30de052a9d2, type: 3}
   m_Name: 
@@ -2655,3 +2722,4 @@ SceneRoots:
   - {fileID: 1278880681}
   - {fileID: 10400527}
   - {fileID: 824304}
+  - {fileID: 561741393}
