@@ -359,21 +359,13 @@ MonoBehaviour:
     m_ActionId: ea63f5dc-d6c3-4ff0-98d1-29963e7424f6
     m_ActionName: Gameplay/RightClick[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 10400526}
-        m_TargetAssemblyTypeName: Interaction.Core.InteractionSystem, Assembly-CSharp
-        m_MethodName: OnLeftClickPerformed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 04925697-dc5b-45d2-b34f-1379e1e18368
     m_ActionName: Gameplay/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6e4b2bf2-1368-4176-9cf7-542ca9658564
+    m_ActionName: Gameplay/Move[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay

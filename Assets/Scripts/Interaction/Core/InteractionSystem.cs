@@ -132,18 +132,6 @@ namespace Interaction.Core
 
         }
 
-        /// <summary>Asignar al evento "Click" en PlayerInput.</summary>
-        public void OnLeftClickPerformed()
-        {
-            if (_isInteracting)          return;
-            if (_currentHovered == null) return;
-            if (_verbSelector == null)   return;
-
-            var verb = _verbSelector.ActiveVerb;
-            if (verb == VerbType.None)   return;
-
-            InteractAsync(_currentHovered, verb).Forget();
-        }
 
         /// <summary>Asignar al evento "RightClick" en PlayerInput.</summary>
         public void OnRightClickPerformed()

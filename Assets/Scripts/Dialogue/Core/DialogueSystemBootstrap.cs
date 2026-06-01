@@ -30,6 +30,9 @@ namespace Dialogue.Core
         // ─── Lifecycle ────────────────────────────────────────────────
         private void Awake()
         {
+            // Si no está asignado en el Inspector, lo buscamos en la escena actual
+            if (_interactionSystem == null)
+                _interactionSystem = FindAnyObjectByType<InteractionSystem>();  // 🟡 PERF — solo en Awake, aceptable
             ValidateDependencies();
         }
 
