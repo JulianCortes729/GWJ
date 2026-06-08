@@ -15,8 +15,9 @@ MonoBehaviour:
   _journeyNumber: 1
   _title: La Friccion
   _messages:
-  - {fileID: 11400000, guid: 94d46465f6e371a40a6df36958ea4a36, type: 2}
+  - {fileID: 11400000, guid: f636296ce45d5e3428d7bab26bc62f20, type: 2}
   _preProductionKnot: 
   _onAirKnot: 
   _closingKnot: 
   _inkAsset: {fileID: 0}
+  _maxAirTimeSlots: 3

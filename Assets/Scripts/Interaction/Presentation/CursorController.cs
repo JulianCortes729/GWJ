@@ -29,6 +29,9 @@ namespace Interaction.Presentation
         [Header("Offset del tooltip respecto al cursor (px)")]
         [SerializeField] private Vector2 _tooltipOffset = new(20f, -20f);
 
+        [Header("Hotspot (px desde esquina superior-izquierda del sprite)")]
+        [SerializeField] private Vector2 _hotspot = Vector2.zero;
+
         // ── Cache ────────────────────────────────────────────────
         private Canvas _canvas;
         private RectTransform _canvasRect;
@@ -38,6 +41,9 @@ namespace Interaction.Presentation
         {
             _canvas     = GetComponentInParent<Canvas>();
             _canvasRect = _canvas.GetComponent<RectTransform>();
+
+            // ✅ Fix: anclar el sprite por su esquina superior-izquierda (tip del cursor)
+            _cursorRoot.pivot = new Vector2(0f, 1f);
 
             Cursor.visible   = false;                            // oculta cursor del OS
             Cursor.lockState = CursorLockMode.Confined;          // confina al área del juego
@@ -59,8 +65,8 @@ namespace Interaction.Presentation
             _verbSelector.OnVerbChanged          -= HandleVerbChanged;
             _interactionSystem.OnHoverChanged    -= HandleHoverChanged;
 
-            Cursor.visible   = true;                             // restaura cursor del OS al salir
-            Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible   = true;                             // restaura cursor del OS al salir
+            //Cursor.lockState = CursorLockMode.None;
         }
 
         private void Update()
@@ -79,7 +85,8 @@ namespace Interaction.Presentation
                 out var localPoint
             );
 
-            _cursorRoot.localPosition = localPoint;
+            //Restar el hotspot para que el TIP del sprite coincida con el mouse
+            _cursorRoot.localPosition = localPoint - _hotspot;
 
             if (_tooltipText != null)
                 _tooltipText.rectTransform.localPosition = localPoint + _tooltipOffset;

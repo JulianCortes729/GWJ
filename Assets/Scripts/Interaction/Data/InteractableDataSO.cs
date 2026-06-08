@@ -35,6 +35,14 @@ namespace Interaction.Data
         [SerializeField] private string[] _talkConsequences  = Array.Empty<string>();
         [SerializeField] private string[] _useConsequences   = Array.Empty<string>();
 
+
+        [Header("Transición de escena por verbo")]
+        [Tooltip("Si está configurado, al usar ese verbo se transiciona a la escena indicada. " +
+                 "Tiene prioridad más baja que Ink y consecuencias — solo aplica si los anteriores están vacíos.")]
+        [SerializeField] private SceneTransitionData _lookSceneTransition;
+        [SerializeField] private SceneTransitionData _talkSceneTransition;
+        [SerializeField] private SceneTransitionData _useSceneTransition;
+
         // ── API de lectura ───────────────────────────────────────
         public string DisplayName => _displayName;
 
@@ -74,5 +82,23 @@ namespace Interaction.Data
             VerbType.Use  => _useConsequences   ?? Array.Empty<string>(),
             _             => Array.Empty<string>()
         };
+
+
+        /// <summary>
+        /// Devuelve los datos de transición de escena para el verbo dado.
+        /// Retorna null si no está configurado o no es válido.
+        /// </summary>
+        public SceneTransitionData GetSceneTransition(VerbType verb)
+        {
+            var data = verb switch
+            {
+                VerbType.Look => _lookSceneTransition,
+                VerbType.Talk => _talkSceneTransition,
+                VerbType.Use  => _useSceneTransition,
+                _             => null
+            };
+ 
+            return data is { IsValid: true } ? data : null;
+        }
     }
 }

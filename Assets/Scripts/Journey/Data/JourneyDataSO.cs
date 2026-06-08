@@ -35,6 +35,11 @@ namespace Journey.Data
         [Tooltip("El .ink.json compilado que contiene todos los knots de esta jornada.")]
         [SerializeField] private TextAsset _inkAsset = null;
 
+
+        [Header("Tiempo de Aire")]
+        [Tooltip("Cuántos mensajes se pueden leer al aire en esta jornada")]
+        [SerializeField] private int _maxAirTimeSlots = 3;
+       
         // ── API de lectura ────────────────────────────────────────
         public int             JourneyNumber      => _journeyNumber;
         public string          Title              => _title;
@@ -43,5 +48,7 @@ namespace Journey.Data
         public string          OnAirKnot          => _onAirKnot;
         public string          ClosingKnot        => _closingKnot;
         public TextAsset       InkAsset           => _inkAsset;
+        public int MaxAirTimeSlots => _maxAirTimeSlots;
+
     }
 }

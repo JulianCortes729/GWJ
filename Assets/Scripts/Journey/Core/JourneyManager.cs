@@ -24,6 +24,8 @@ namespace Journey.Core
         [SerializeField] private DialogueRunner    _dialogueRunner;
         [SerializeField] private DialogueStorageSO _dialogueStorage;
 
+        [SerializeField] private AirTimeManager _airTimeManager;
+
         // ── Eventos públicos ──────────────────────────────────────
         // Los sistemas de UI escuchan estos eventos.             // ⚠️ SOLID: OCP — agregar listener = cero cambios acá
 
@@ -223,6 +225,9 @@ namespace Journey.Core
             switch (phase)
             {
                 case JourneyPhase.PreProduction:
+                    if (_airTimeManager != null && _currentJourney != null)
+                        _airTimeManager.Initialize(_currentJourney.MaxAirTimeSlots);
+
                     OnMessagesLoaded?.Invoke(_availableMessages);
                     TryStartKnot(_currentJourney?.PreProductionKnot);
                     break;

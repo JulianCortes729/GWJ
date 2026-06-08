@@ -39,14 +39,12 @@ namespace Interaction.Core
 
         // ── Estado interno ───────────────────────────────────────
         private readonly RaycastHit2D[] _raycastBuffer = new RaycastHit2D[8]; // 🟢 POOL — array cacheado, NonAlloc, zero GC
-        private readonly List<IInteractionHandler> _handlers = new(2);
+        private readonly List<IInteractionHandler> _handlers = new(4); // handlers registrados, ordenados por prioridad (Ink primero) capacidad 4: Ink + Consequence + SceneTransition + reserva
 
         private InteractableObject _currentHovered;
         private Vector2            _lastCursorPosition;
         private bool               _isInteracting;
-
         private bool               _radialIsOpen;
-
         private int _lastRightClickFrame = -1;
 
 
@@ -96,8 +94,13 @@ namespace Interaction.Core
 
         private void RegisterHandlers()
         {
-            // ConsequenceHandler se registra en Awake como antes.
-            // InkHandler se registra desde Bootstrap en Start(), con sus dos delegates.
+            /// Orden de prioridad (de mayor a menor):
+            //   [0] InkInteractionHandler         — se inserta desde DialogueSystemBootstrap.Start()
+            //   [1] ConsequenceInteractionHandler  — registrado aquí en Awake()
+            //   [2] SceneTransitionHandler         — se inserta desde SceneTransitionBootstrap.Start()
+            //
+            // InkHandler y SceneTransitionHandler se insertan después porque sus dependencias
+            // (DialogueRunner y SceneTransitionManager) pueden no estar listas en Awake.
             _handlers.Add(new ConsequenceInteractionHandler(tags => OnConsequencesRequested?.Invoke(tags)));
         }
 
@@ -213,12 +216,6 @@ namespace Interaction.Core
             InteractAsync(target, verb).Forget();
         }
 
-        // Métodos públicos para que VerbHUD notifique el estado
-        public void NotifyRadialOpened()  => _radialIsOpen = true;
-        public void NotifyRadialClosed()  => _radialIsOpen = false;
-
-
-
         /// <summary>
         /// Llamado por DialogueSystemBootstrap en Start().
         /// Inserta InkInteractionHandler al FRENTE de la lista (Ink primero).
@@ -229,5 +226,22 @@ namespace Interaction.Core
         {
             _handlers.Insert(0, new InkInteractionHandler(onKnotRequested, waitForDialogueEnd));
         }
+
+        /// <summary>
+        /// Llamado por SceneTransitionBootstrap en Start().
+        /// Agrega SceneTransitionInteractionHandler al FINAL de la lista
+        /// (menor prioridad: solo aplica si no hay Ink ni consecuencias).
+        /// </summary>
+        public void RegisterSceneTransitionHandler(Action<string, string> onTransitionRequested)
+        {
+            _handlers.Add(new SceneTransitionInteractionHandler(onTransitionRequested));
+        }
+
+
+
+         // Métodos públicos para que VerbHUD notifique el estado
+        public void NotifyRadialOpened()  => _radialIsOpen = true;
+        public void NotifyRadialClosed()  => _radialIsOpen = false;
+
     }
 }
