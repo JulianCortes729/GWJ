@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2c2aa0e6a8b722448d39628b685d0d2, type: 3}
-  m_Name: Interactable_Telefono
+  m_Name: Interactable_Notas
   m_EditorClassIdentifier: 
-  _displayName: Telefono
+  _displayName: Objeto
   _canLook: 1
-  _canTalk: 1
-  _canUse: 1
-  _lookKnot: mirar_telefono
-  _talkKnot: hablar_telefono
+  _canTalk: 0
+  _canUse: 0
+  _lookKnot: mirar_notas
+  _talkKnot: 
   _useKnot: 
   _lookConsequences: []
   _talkConsequences: []

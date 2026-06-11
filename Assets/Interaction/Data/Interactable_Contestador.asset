@@ -15,10 +15,19 @@ MonoBehaviour:
   _displayName: Objeto
   _canLook: 1
   _canTalk: 0
-  _canUse: 0
+  _canUse: 1
   _lookKnot: 
   _talkKnot: 
   _useKnot: 
   _lookConsequences: []
   _talkConsequences: []
   _useConsequences: []
+  _lookSceneTransition:
+    _sceneName: 
+    _spawnId: default
+  _talkSceneTransition:
+    _sceneName: 
+    _spawnId: default
+  _useSceneTransition:
+    _sceneName: 
+    _spawnId: default

@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 824306}
   - component: {fileID: 824305}
   m_Layer: 6
-  m_Name: TelefonoTest
+  m_Name: Prop_Telefono
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -651,6 +651,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174714303}
   m_CullTransparentMesh: 1
+--- !u!1 &207572094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 207572096}
+  - component: {fileID: 207572095}
+  m_Layer: 0
+  m_Name: UIInteractionBootstrap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &207572095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207572094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790cdd978057c1947bd357f9e15339f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionSystem: {fileID: 10400526}
+  _entries:
+  - Target: {fileID: 2036744837}
+    Verb: 3
+    Board: {fileID: 2065344393}
+  - Target: {fileID: 824305}
+    Verb: 3
+    Board: {fileID: 1399101399}
+--- !u!4 &207572096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207572094}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.65679073, y: 29.215729, z: -0.21910062}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &337655945
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,10 +959,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1047507630}
-  - {fileID: 1832635622}
   - {fileID: 912364393}
   - {fileID: 2090197020}
+  - {fileID: 2065344392}
+  - {fileID: 1399101398}
   m_Father: {fileID: 1664699674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1311,7 +1363,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _journeys:
   - {fileID: 11400000, guid: 88947b655f6fb3541823469661702aff, type: 2}
-  - {fileID: 11400000, guid: fa8e74c5a0e03fc48bb1da39a5cdc844, type: 2}
   _dialogueRunner: {fileID: 2088357262}
   _dialogueStorage: {fileID: 11400000, guid: 3ca3e39471bccd94cb7495496527c41b, type: 2}
   _airTimeManager: {fileID: 593302075}
@@ -1337,7 +1388,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561741391}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa3f06c268ea66640b066b407cd5eb81, type: 3}
   m_Name: 
@@ -2809,7 +2860,7 @@ GameObject:
   - component: {fileID: 1017854324}
   - component: {fileID: 1017854323}
   m_Layer: 6
-  m_Name: Prop_Contestador
+  m_Name: Prop_Notas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2894,7 +2945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fecb6aa5688478419b65637eb738dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: ef5d7c9d403c15747b1744c8a629a52d, type: 2}
+  _data: {fileID: 11400000, guid: 2cd8fb47fc5863a46a22738adb646fb8, type: 2}
 --- !u!61 &1017854324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3085,9 +3136,8 @@ GameObject:
   - component: {fileID: 1047507633}
   - component: {fileID: 1047507632}
   - component: {fileID: 1047507631}
-  - component: {fileID: 1047507634}
   m_Layer: 5
-  m_Name: PC_EmailBoard_Panel
+  m_Name: Board_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3100,14 +3150,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047507629}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 76844114}
   - {fileID: 1321747943}
-  m_Father: {fileID: 447349612}
+  m_Father: {fileID: 2065344392}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3157,7 +3207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.41960785}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3182,24 +3232,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047507629}
   m_CullTransparentMesh: 1
---- !u!114 &1047507634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047507629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3084d800218d7054592722f228203089, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _journeyManager: {fileID: 561741392}
-  _airTimeManager: {fileID: 593302075}
-  _sourceType: 3
-  _boardPanel: {fileID: 1047507629}
-  _cardsContainer: {fileID: 1524669130}
-  _cardPrefab: {fileID: 1838527626179547983, guid: 0ae3f23e43b190f4d86e096e2877fb4f, type: 3}
 --- !u!1 &1156029238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3464,10 +3496,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1047507629}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 2065344393}
+        m_TargetAssemblyTypeName: Journey.Presentation.MessageBoardUI, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3658,10 +3690,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1047507629}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1399101399}
+        m_TargetAssemblyTypeName: Journey.Presentation.MessageBoardUI, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3708,6 +3740,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392086823}
   m_CullTransparentMesh: 1
+--- !u!1 &1399101397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399101398}
+  - component: {fileID: 1399101399}
+  m_Layer: 5
+  m_Name: Celular_SMSBoard_Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1399101398
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399101397}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1832635622}
+  m_Father: {fileID: 447349612}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1399101399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399101397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3084d800218d7054592722f228203089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _journeyManager: {fileID: 561741392}
+  _airTimeManager: {fileID: 593302075}
+  _sourceType: 1
+  _boardPanel: {fileID: 1832635621}
+  _cardsContainer: {fileID: 1705457800}
+  _cardPrefab: {fileID: 1838527626179547983, guid: 0ae3f23e43b190f4d86e096e2877fb4f, type: 3}
 --- !u!1 &1443671615
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,8 +4153,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 174714304}
-  - {fileID: 1323663807}
   - {fileID: 447349612}
+  - {fileID: 1323663807}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4330,9 +4417,8 @@ GameObject:
   - component: {fileID: 1832635626}
   - component: {fileID: 1832635625}
   - component: {fileID: 1832635624}
-  - component: {fileID: 1832635623}
   m_Layer: 5
-  m_Name: Celular_SMSBoard_Panel
+  m_Name: Board_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4345,38 +4431,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832635621}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 516188215}
   - {fileID: 1392086824}
-  m_Father: {fileID: 447349612}
+  m_Father: {fileID: 1399101398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 500, y: 160}
   m_SizeDelta: {x: 700, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1832635623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1832635621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3084d800218d7054592722f228203089, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _journeyManager: {fileID: 561741392}
-  _airTimeManager: {fileID: 593302075}
-  _sourceType: 1
-  _boardPanel: {fileID: 1832635621}
-  _cardsContainer: {fileID: 1705457800}
-  _cardPrefab: {fileID: 1838527626179547983, guid: 0ae3f23e43b190f4d86e096e2877fb4f, type: 3}
 --- !u!114 &1832635624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4951,6 +5019,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: b55bf976d547fee4eb41d2e95a5db902, type: 2}
+--- !u!1 &2065344391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2065344392}
+  - component: {fileID: 2065344393}
+  m_Layer: 5
+  m_Name: PC_EmailBoard_Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2065344392
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065344391}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1047507630}
+  m_Father: {fileID: 447349612}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2065344393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065344391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3084d800218d7054592722f228203089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _journeyManager: {fileID: 561741392}
+  _airTimeManager: {fileID: 593302075}
+  _sourceType: 3
+  _boardPanel: {fileID: 1047507629}
+  _cardsContainer: {fileID: 1524669130}
+  _cardPrefab: {fileID: 1838527626179547983, guid: 0ae3f23e43b190f4d86e096e2877fb4f, type: 3}
 --- !u!1 &2088357260
 GameObject:
   m_ObjectHideFlags: 0
@@ -5067,14 +5190,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088357260}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f729fa872bfe0a43b5da30de052a9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogueRunner: {fileID: 2088357262}
   _interactionSystem: {fileID: 10400526}
-  _inkJsonAsset: {fileID: 4900000, guid: 133167cc86194764a8d31d46f318ae66, type: 3}
 --- !u!1 &2090197019
 GameObject:
   m_ObjectHideFlags: 0
@@ -5368,3 +5490,4 @@ SceneRoots:
   - {fileID: 561741393}
   - {fileID: 593302076}
   - {fileID: 31629070}
+  - {fileID: 207572096}

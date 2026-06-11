@@ -70,6 +70,9 @@ namespace Interaction.Core
 
         private void OnDisable()
         {
+            Debug.LogError(
+                $"[InteractionSystem] OnDisable! activo={gameObject.activeSelf}\n" +
+                $"{System.Environment.StackTrace}", this);
             CancelCurrentInteraction();
         }
 
@@ -102,6 +105,22 @@ namespace Interaction.Core
             // InkHandler y SceneTransitionHandler se insertan después porque sus dependencias
             // (DialogueRunner y SceneTransitionManager) pueden no estar listas en Awake.
             _handlers.Add(new ConsequenceInteractionHandler(tags => OnConsequencesRequested?.Invoke(tags)));
+        }
+
+        /// <summary>
+        /// Llamado por UIInteractionBootstrap en Start().
+        /// Inserta UIOpenInteractionHandler en segunda posición:
+        /// después de Ink (narrativa tiene prioridad máxima),
+        /// antes de Consequence y SceneTransition.
+        /// </summary>
+        public void RegisterUIOpenHandler(UIOpenInteractionHandler handler)
+        {
+            // Posición 1: [0]=Ink, [1]=UI, [2]=Consequence, [3]=SceneTransition
+            // Un objeto de escritorio no tendrá knots de Ink, así que Ink
+            // no intercepta — pero respetamos el orden de prioridades por consistencia.
+            int insertIndex = Mathf.Min(1, _handlers.Count);
+            _handlers.Insert(insertIndex, handler);
+            Debug.Log($"[InteractionSystem] UIOpenHandler registrado en posición {insertIndex}.");
         }
 
         // ── Hover (raycast condicional) ──────────────────────────

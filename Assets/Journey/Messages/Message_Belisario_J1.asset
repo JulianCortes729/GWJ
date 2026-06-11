@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f2ace604dea9d4ebb80900bdb43376, type: 3}
   m_Name: Message_Belisario_J1
   m_EditorClassIdentifier: 
-  _sender: Tutor programa rural
-  _recipient: "Belisario L\xF3pez"
+  _sender: 'de: Tutor programa rural'
+  _recipient: "para: Belisario L\xF3pez"
   _rawText: Aviso para Belisario Lopez en el puesto El Sosiego...
   _type: 3
   _requiresDecoding: 0

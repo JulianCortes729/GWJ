@@ -17,8 +17,9 @@ MonoBehaviour:
   _messages:
   - {fileID: 11400000, guid: e7f2c2b901171ee4382637ea3a8986de, type: 2}
   - {fileID: 11400000, guid: 94d46465f6e371a40a6df36958ea4a36, type: 2}
-  _preProductionKnot: 
+  - {fileID: 11400000, guid: f636296ce45d5e3428d7bab26bc62f20, type: 2}
+  _preProductionKnot: pre_produccion
   _onAirKnot: 
   _closingKnot: 
-  _inkAsset: {fileID: 0}
-  _maxAirTimeSlots: 1
+  _inkAsset: {fileID: 4900000, guid: 33d6d29e27425234f89333ae580bac58, type: 3}
+  _maxAirTimeSlots: 3

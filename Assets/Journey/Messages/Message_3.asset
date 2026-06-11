@@ -16,7 +16,7 @@ MonoBehaviour:
   _recipient: Radio
   _rawText: Pasen un temade Spinetta por favor
   _type: 1
-  _requiresDecoding: 0
-  _isCritical: 0
+  _requiresDecoding: 1
+  _isCritical: 1
   _onAirKnot: 
   _onSkippedKnot: 

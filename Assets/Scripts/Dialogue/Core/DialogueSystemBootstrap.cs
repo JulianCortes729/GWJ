@@ -18,7 +18,7 @@ namespace Dialogue.Core
         // ─── Dependencias ─────────────────────────────────────────────
         [SerializeField] private DialogueRunner   _dialogueRunner;
         [SerializeField] private InteractionSystem _interactionSystem;
-        [SerializeField] private TextAsset         _inkJsonAsset;      // el .ink.json de la escena actual
+        
 
 
          // ─── Estado ───────────────────────────────────────────────────
@@ -38,10 +38,7 @@ namespace Dialogue.Core
 
         private void Start()
         {
-            // Start() garantiza que todos los Awake() ya corrieron
-            // antes de cargar la historia                              // 📌 lifecycle correcto
-            _dialogueRunner.LoadStory(_inkJsonAsset);
-
+            
             // Construimos los handlers DESPUÉS de tener la referencia
             // a DialogueRunner, pasando los dos delegates.
             _interactionSystem.RegisterInkHandler(
@@ -98,9 +95,6 @@ namespace Dialogue.Core
 
             if (_interactionSystem == null)
                 Debug.LogError("[DialogueSystemBootstrap] InteractionSystem no asignado.", this);
-
-            if (_inkJsonAsset == null)
-                Debug.LogError("[DialogueSystemBootstrap] inkJsonAsset no asignado.", this);
         }
     }
 }

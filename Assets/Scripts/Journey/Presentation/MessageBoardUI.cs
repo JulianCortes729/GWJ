@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using Journey.Core;
 using Journey.Data;
+using System;
 
 namespace Journey.Presentation
 {
@@ -39,6 +40,13 @@ namespace Journey.Presentation
         // devuelven al avanzar de fase. En steady state: zero allocs.
         private ObjectPool<MessageCardUI>    _cardPool;
         private readonly List<MessageCardUI> _activeCards = new();
+
+
+        /// <summary>
+        /// Dispara cuando el jugador cierra el panel manualmente.
+        /// UIOpenInteractionHandler lo escucha para liberar _isInteracting.
+        /// </summary>
+        public event Action OnBoardClosed;
 
         // ── Lifecycle ─────────────────────────────────────────────
         private void Awake()
@@ -107,12 +115,11 @@ namespace Journey.Presentation
 
         private void HandlePhaseChanged(JourneyPhase phase)
         {
-            // El tablero solo es visible en PreProducción.              // 📌 GDD — en OnAir y Closing el foco es la consola
             bool isPreProduction = phase == JourneyPhase.PreProduction;
-            _boardPanel.SetActive(isPreProduction);
 
             if (!isPreProduction)
-                ReturnAllCardsToPool();
+                Close();    // al salir de PreProducción el panel se cierra automáticamente para evitar que quede abierto sin supervisión del jugador
+           
         }
 
         /// <summary>
@@ -132,6 +139,21 @@ namespace Journey.Presentation
             // TODO P10 — reemplazar por llamada al DecodingMinigame real.
             Debug.Log($"[MessageBoardUI] Decodificación solicitada. Tipo: {messageType}. Stub activo.");
             card.SetDecoded("[TEXTO DECODIFICADO — stub P10]");
+        }
+
+        /// <summary>
+        /// Abre el panel. Llamado por UIOpenInteractionHandler o por cambio de fase.
+        /// </summary>
+        public void Open() => _boardPanel.SetActive(true);
+
+        /// <summary>
+        /// Cierra el panel y notifica a quien esté esperando (UIOpenInteractionHandler).
+        /// Conectar al botón "Cerrar" del panel en el Inspector.
+        /// </summary>
+        public void Close()
+        {
+            _boardPanel.SetActive(false);
+            OnBoardClosed?.Invoke();
         }
 
         // ── Pool ──────────────────────────────────────────────────
